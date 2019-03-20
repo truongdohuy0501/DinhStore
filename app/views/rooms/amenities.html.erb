@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-3">
+    <%= render "room_menu" %>
+  </div>
+  <div class="col-md-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Amenities
+      </div>
+      <div class="panel-body">
+        <div class=container>
+          <%= form_for @room do |f| %>
+            <div class="div row form-group">
+              <div class="div col-md-4"><%= f.check_box :is_tv %>TV</div>
+              <div class="div col-md-4"><%= f.check_box :is_kitchen %>Kitchen</div>
+              <div class="div col-md-4"><%= f.check_box :is_internet %>Internet</div>
+            </div>
+
+            <div class="div row form-group">
+              <div class="div col-md-4"><%= f.check_box :is_heating %>Heating</div>
+              <div class="div col-md-4"><%= f.check_box :is_air %>Air Conditioning</div>
+            </div>
+            <br /><br />
+            <div class="div text-center">
+              <%= f.submit "Save", class:"btn btn-form" %>
+            </div>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

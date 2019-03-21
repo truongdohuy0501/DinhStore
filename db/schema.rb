@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< Updated upstream
 ActiveRecord::Schema.define(version: 20181011072047) do
+=======
+<<<<<<< Updated upstream
+ActiveRecord::Schema.define(version: 20190321032638) do
+=======
+ActiveRecord::Schema.define(version: 20190321032643) do
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +78,7 @@ ActiveRecord::Schema.define(version: 20181011072047) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+<<<<<<< Updated upstream
   create_table "views", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -84,4 +93,11 @@ ActiveRecord::Schema.define(version: 20181011072047) do
 
   add_foreign_key "photos", "rooms"
   add_foreign_key "rooms", "users"
+=======
+<<<<<<< Updated upstream
+=======
+  add_foreign_key "photos", "rooms"
+  add_foreign_key "rooms", "users"
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 end

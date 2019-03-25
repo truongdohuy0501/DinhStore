@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< Updated upstream
-ActiveRecord::Schema.define(version: 20181011072047) do
-=======
-<<<<<<< Updated upstream
-ActiveRecord::Schema.define(version: 20190321032638) do
-=======
-ActiveRecord::Schema.define(version: 20190321032643) do
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+ActiveRecord::Schema.define(version: 20190325064620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +45,8 @@ ActiveRecord::Schema.define(version: 20190321032643) do
     t.datetime "updated_at", null: false
     t.boolean "is_internet"
     t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
@@ -78,26 +72,6 @@ ActiveRecord::Schema.define(version: 20190321032643) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-<<<<<<< Updated upstream
-  create_table "views", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_views_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_views_on_reset_password_token", unique: true
-  end
-
   add_foreign_key "photos", "rooms"
   add_foreign_key "rooms", "users"
-=======
-<<<<<<< Updated upstream
-=======
-  add_foreign_key "photos", "rooms"
-  add_foreign_key "rooms", "users"
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 end

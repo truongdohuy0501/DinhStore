@@ -12,7 +12,6 @@ class RoomsController < ApplicationController
   end
 
   def create
-    byebug
     @room = current_user.rooms.build(room_params)
     if @room.save
       redirect_to listing_room_path(@room), notice: "Saved..."
@@ -22,6 +21,7 @@ class RoomsController < ApplicationController
   end
 
   def show
+    @photos = @room.photos
   end
 
   def listing
@@ -44,7 +44,11 @@ class RoomsController < ApplicationController
   end
 
   def update
-    if @room.update(room_params)
+
+    new_params = room_params
+    new_params = room_params.merge(active: true) if is_ready_room
+
+    if @room.update(new_params)
       flash[:notice] = "Saved..."
     else
       flash[:notice] = "Something went wrong..."
@@ -61,7 +65,11 @@ class RoomsController < ApplicationController
       redirect_to root_path, alert: "You don't have permisstion" unless current_user.id == @room.user_id
     end
 
+    def is_ready_room
+      !@room.active && !@room.price.blank? && !@room.listing_name.blank? && !@room.photos.blank? && !@room.address.blank?
+    end
+
     def room_params
-      params.require(:room).permit(:home_type, :room_type, :accommodate, :bed_room, :bath_room, :listing_name, :sumary, :address, :is_tv, :is_kitchen, :is_air, :is_heating, :is_internet, :price, :active)
+      params.require(:room).permit(:home_type, :room_type, :accommodate, :bed_room, :bath_room, :listing_name, :summary, :address, :is_tv, :is_kitchen, :is_air, :is_heating, :is_internet, :price, :active)
     end
 end

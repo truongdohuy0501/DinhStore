@@ -56,7 +56,31 @@ class RoomsController < ApplicationController
     redirect_back(fallback_location: request.referer)
   end
 
+  # -- Reservations
+  def preload
+    today = Date.today
+    reservations = @room.reservations.where("start_date >= ? or end_date >= ?", today, today)
+
+    render json: reservations
+  end
+
+  def preview
+    start_date = Date.parse(params[:start_date])
+    end_date = Date.parse(params[:end_date])
+
+    output = {
+      conflict: is_conflict(start_date, end_date, @room)
+    }
+
+    render json: output
+  end
+
   private
+  
+    def is_conflict(start_date, end_date, room)
+      check = room.reservations.where("? < start_date and end_date < ?", start_date, end_date)
+      check.size > 0 ? true : false
+    end
     def set_room
       @room = Room.find(params[:id])
     end

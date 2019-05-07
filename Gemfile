@@ -43,3 +43,6 @@ gem 'paperclip', '~> 5.1.0'
 gem 'aws-sdk', '~> 2.8'
 
 gem 'geocoder', '~> 1.4'
+gem 'jquery-rails'
+gem 'rails-ujs', '~> 5.1.0.beta1'
+gem 'jquery-ui-rails', '~> 5.0'

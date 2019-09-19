@@ -20,7 +20,7 @@ Rails.application.routes.draw do
       get 'preview'
     end
     resources :photos, only: [:create, :destroy]
-    resources :reservations, only: [:create]
+    resources :reservations, only: [:create, :destroy]
   end
 
   get '/your_trips' => 'reservations#your_trips'
